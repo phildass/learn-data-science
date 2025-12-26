@@ -4,6 +4,12 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const path = require('path');
 
+// Initialize data files on startup
+const { initializeDataFiles } = require('./data/seedData');
+console.log('\n=== Initializing Data Files ===');
+initializeDataFiles();
+console.log('================================\n');
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
