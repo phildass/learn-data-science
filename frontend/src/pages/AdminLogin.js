@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function AdminLogin() {
-  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -15,7 +14,7 @@ function AdminLogin() {
     setLoading(true);
 
     try {
-      const response = await axios.post('/admin/login', { username, password });
+      const response = await axios.post('/admin/login', { password });
       if (response.data.success) {
         navigate('/admin');
       }
@@ -42,22 +41,11 @@ function AdminLogin() {
         
         <form onSubmit={handleLogin}>
           <label>
-            <strong>Username</strong>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter admin username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          
-          <label>
-            <strong>Password</strong>
+            <strong>Admin Password</strong>
           </label>
           <input
             type="password"
-            placeholder="Enter admin password"
+            placeholder="Enter the admin password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -70,7 +58,7 @@ function AdminLogin() {
         
         <div style={{ marginTop: '20px', textAlign: 'center' }}>
           <p style={{ fontSize: '14px', color: '#718096' }}>
-            Default credentials: phil123 / phil123
+            Admin password only required for login
           </p>
           <p style={{ fontSize: '14px', color: '#718096', marginTop: '10px' }}>
             <a href="/login" style={{ color: '#667eea' }}>← Back to User Login</a>
