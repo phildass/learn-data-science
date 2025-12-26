@@ -64,6 +64,18 @@ function Certificate({ user }) {
       </div>
 
       <div className="certificate">
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <img src="/images/iiskills.png" alt="iiskills.cloud" style={{ height: '60px', width: 'auto' }} />
+            <span style={{ fontSize: '10px', color: '#4a5568', maxWidth: '150px', lineHeight: '1.3' }}>
+              Indian Institute of Professional Skills Development
+            </span>
+          </div>
+          <div>
+            <img src="/images/ai-cloud.png" alt="AI Cloud Enterprises" style={{ height: '60px', width: 'auto' }} />
+          </div>
+        </div>
+        
         <div style={{ marginBottom: '30px' }}>
           <h1 style={{ color: '#667eea', fontSize: '3rem', margin: '0' }}>🎓</h1>
         </div>
@@ -113,7 +125,10 @@ function Certificate({ user }) {
             <div style={{ borderTop: '2px solid #2d3748', width: '200px', marginBottom: '10px' }}></div>
             <p style={{ fontSize: '0.9rem', color: '#718096' }}>Authorized Signature</p>
             <p style={{ fontSize: '1.2rem', color: '#2d3748', fontWeight: '600', fontStyle: 'italic' }}>
-              Learn Data Science
+              AI Cloud Enterprises
+            </p>
+            <p style={{ fontSize: '0.8rem', color: '#718096', marginTop: '5px' }}>
+              iiskills.cloud
             </p>
           </div>
         </div>

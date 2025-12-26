@@ -96,7 +96,10 @@ function Quiz({ user }) {
   if (showResults) {
     return (
       <div className="container">
-        <h1>Quiz Results</h1>
+        <h1>AI Cloud Enterprises - Quiz Results</h1>
+        <div style={{ textAlign: 'center', color: 'white', fontSize: '14px', marginBottom: '20px' }}>
+          iiskills.cloud
+        </div>
         
         <div className="card">
           <h2 style={{ textAlign: 'center' }}>Your Score: {results.percentage}%</h2>
@@ -173,7 +176,10 @@ function Quiz({ user }) {
 
   return (
     <div className="container">
-      <h1>Certification Quiz</h1>
+      <h1>AI Cloud Enterprises - Certification Quiz</h1>
+      <div style={{ textAlign: 'center', color: 'white', fontSize: '14px', marginBottom: '20px' }}>
+        iiskills.cloud
+      </div>
       
       <div className="card">
         <div style={{ marginBottom: '20px' }}>

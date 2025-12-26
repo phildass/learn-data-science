@@ -47,7 +47,10 @@ function Dashboard({ user, setUser }) {
 
   return (
     <div className="container">
-      <h1>🎓 Data Science Learning Platform</h1>
+      <h1>🎓 AI Cloud Enterprises - Data Science Learning Platform</h1>
+      <div style={{ textAlign: 'center', color: 'white', fontSize: '14px', marginBottom: '20px' }}>
+        Powered by iiskills.cloud
+      </div>
       
       <div className="card">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

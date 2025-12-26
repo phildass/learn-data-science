@@ -1,6 +1,8 @@
-# 🎓 Learn Data Science - Indian Job Market Edition
+# 🎓 AI Cloud Enterprises - Data Science Learning Platform
 
-A comprehensive full-stack education platform focused on Data Science, AI, and Machine Learning tailored for the Indian job market. This platform features a Node.js/Express backend, React frontend, and a complete admin panel.
+A comprehensive full-stack education platform by AI Cloud Enterprises (iiskills.cloud), focused on Data Science, AI, and Machine Learning tailored for the Indian job market. This platform features a Node.js/Express backend, React frontend, and a complete admin panel.
+
+Powered by the Indian Institute of Professional Skills Development.
 
 ## 🌟 Features
 
@@ -204,7 +206,7 @@ learn-data-science/
 
 ### For Production Deployment
 1. **Replace stub endpoints** with production services:
-   - Integrate with iiskills.cloud for OTP service
+   - Integrate with AI Cloud Enterprises (iiskills.cloud) for OTP service
    - Connect to real payment gateway
    
 2. **Add Database**:
@@ -293,10 +295,12 @@ For issues or questions, please open an issue on GitHub.
 
 ## 🙏 Acknowledgments
 
+- Developed by AI Cloud Enterprises (iiskills.cloud)
+- Indian Institute of Professional Skills Development
 - Built for the Indian Data Science community
 - Content tailored for Indian job market requirements
 - Focused on practical, industry-relevant skills
 
 ---
 
-**Made with ❤️ for aspiring Data Scientists in India**
+**Made with ❤️ by AI Cloud Enterprises for aspiring Data Scientists in India**
