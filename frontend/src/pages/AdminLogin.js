@@ -58,7 +58,7 @@ function AdminLogin() {
         
         <div style={{ marginTop: '20px', textAlign: 'center' }}>
           <p style={{ fontSize: '14px', color: '#718096' }}>
-            Admin password only required for login
+            Only admin password required for login
           </p>
           <p style={{ fontSize: '14px', color: '#718096', marginTop: '10px' }}>
             <a href="/login" style={{ color: '#667eea' }}>← Back to User Login</a>
