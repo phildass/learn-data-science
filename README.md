@@ -47,6 +47,7 @@ Powered by the Indian Institute of Professional Skills Development.
 - **RESTful API**: Well-structured backend API endpoints
 - **Responsive Design**: Works on desktop and mobile devices
 - **In-memory Data Storage**: Easy to upgrade to database (MongoDB, PostgreSQL, etc.)
+- **Automatic Data Initialization**: Auto-populates modules and quiz data on server startup if missing or invalid
 - **Stub Payment/OTP Endpoints**: Ready to integrate with production services
 
 ## 🚀 Quick Start
@@ -70,6 +71,8 @@ Powered by the Indian Institute of Professional Skills Development.
    npm run dev
    ```
    Backend will run on `http://localhost:5000`
+   
+   **Note**: On first startup, the backend automatically checks and initializes `modules.json` and `quiz.json` with sample data if they're missing or invalid.
 
 3. **Setup Frontend** (in a new terminal)
    ```bash
