@@ -67,9 +67,11 @@ function ModuleView({ user }) {
 
   return (
     <div className="container">
-      <h1>AI Cloud Enterprises - Learning Module</h1>
-      <div style={{ textAlign: 'center', color: 'white', fontSize: '14px', marginBottom: '20px' }}>
-        iiskills.cloud
+      <div className="logo-bar">
+        <h1 style={{ margin: 0 }}>AI Cloud Enterprises - Learning Module</h1>
+        <div style={{ textAlign: 'center', fontSize: '14px', color: '#718096' }}>
+          iiskills.cloud
+        </div>
       </div>
       
       <div className="card">
