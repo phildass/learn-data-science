@@ -5,7 +5,6 @@ const path = require('path');
 
 // Admin credentials (in production, use database with hashed passwords)
 const adminCredentials = {
-  username: 'phil123',
   password: 'phil123' // Change this after first login
 };
 
@@ -19,11 +18,10 @@ const requireAdmin = (req, res, next) => {
 
 // Admin login
 router.post('/login', (req, res) => {
-  const { username, password } = req.body;
+  const { password } = req.body;
   
-  if (username === adminCredentials.username && password === adminCredentials.password) {
+  if (password === adminCredentials.password) {
     req.session.isAdmin = true;
-    req.session.adminUsername = username;
     res.json({ success: true, message: 'Admin login successful' });
   } else {
     res.status(401).json({ success: false, message: 'Invalid credentials' });
@@ -50,7 +48,6 @@ router.post('/change-password', requireAdmin, (req, res) => {
 // Admin logout
 router.post('/logout', requireAdmin, (req, res) => {
   req.session.isAdmin = false;
-  req.session.adminUsername = null;
   res.json({ success: true, message: 'Admin logged out' });
 });
 
