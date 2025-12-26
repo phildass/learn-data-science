@@ -7,7 +7,7 @@ const path = require('path');
 // Initialize data files on startup
 const { initializeDataFiles } = require('./data/seedData');
 console.log('\n=== Initializing Data Files ===');
-const initResult = initializeDataFiles();
+initializeDataFiles();
 console.log('================================\n');
 
 const app = express();

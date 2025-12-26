@@ -1,6 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
+// Configuration constants
+const MIN_REQUIRED_MODULES = 6;
+
 // Sample module data for a beginner-friendly data science course focused on Indian job market
 const defaultModules = [
   {
@@ -183,8 +186,8 @@ function validateData(data, type) {
   }
 
   if (type === 'modules') {
-    // Check if we have at least 6 modules with required fields
-    if (data.length < 6) return false;
+    // Check if we have at least the minimum required modules with required fields
+    if (data.length < MIN_REQUIRED_MODULES) return false;
     
     for (const module of data) {
       if (!module.id || !module.title || !module.description || !module.content || !module.duration) {
