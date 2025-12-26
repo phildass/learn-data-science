@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "question": "Which Indian e-commerce company is mentioned as a major employer of data scientists for demand prediction during festivals?",
+    "options": [
+      "Amazon India",
+      "Flipkart",
+      "Myntra",
+      "Snapdeal"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Flipkart employs thousands of data scientists to predict product demand during festivals like Diwali and Big Billion Days, optimize delivery routes, and personalize recommendations for 350+ million customers."
+  },
+  {
+    "id": 2,
+    "question": "According to NASSCOM, how many data science professionals does India need by 2025?",
+    "options": [
+      "50,000",
+      "1,00,000",
+      "1,50,000 (1.5 lakh)",
+      "2,00,000"
+    ],
+    "correctAnswer": 2,
+    "explanation": "NASSCOM reports indicate that India needs over 1.5 lakh (150,000) data science professionals by 2025 to meet the growing demand in the IT and tech sector."
+  },
+  {
+    "id": 3,
+    "question": "Which Python library is primarily used for data manipulation with DataFrames and is essential for reading CSV files?",
+    "options": [
+      "NumPy",
+      "Matplotlib",
+      "Pandas",
+      "Seaborn"
+    ],
+    "correctAnswer": 2,
+    "explanation": "Pandas is the essential library for data manipulation in Python. It provides DataFrames and Series data structures and is used for reading CSV/Excel files, data cleaning, and preprocessing."
+  },
+  {
+    "id": 4,
+    "question": "In Indian context, which machine learning algorithm would be most suitable for customer segmentation in e-commerce?",
+    "options": [
+      "Linear Regression",
+      "Logistic Regression",
+      "K-Means Clustering",
+      "Decision Trees"
+    ],
+    "correctAnswer": 2,
+    "explanation": "K-Means Clustering is an unsupervised learning algorithm ideal for customer segmentation. It groups customers by buying behavior, which is valuable for e-commerce platforms like Amazon and Flipkart."
+  },
+  {
+    "id": 5,
+    "question": "What is the typical salary range for an entry-level Data Scientist (0-1 year experience) in India as of 2024?",
+    "options": [
+      "₹2-4 LPA",
+      "₹3-6 LPA",
+      "₹8-12 LPA",
+      "₹15-20 LPA"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Entry-level Data Scientists (0-1 year experience) in India typically earn between ₹3-6 LPA (Lakhs Per Annum), though this can vary based on company, location, and skills."
+  },
+  {
+    "id": 6,
+    "question": "Which type of neural network is best suited for image recognition tasks such as Aadhaar-based face verification?",
+    "options": [
+      "Recurrent Neural Networks (RNN)",
+      "Convolutional Neural Networks (CNN)",
+      "Artificial Neural Networks (ANN)",
+      "Generative Adversarial Networks (GAN)"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Convolutional Neural Networks (CNNs) are specifically designed for computer vision and image recognition tasks. They use convolutional layers and pooling to detect features in images, making them ideal for face verification systems."
+  },
+  {
+    "id": 7,
+    "question": "In hypothesis testing, what is the commonly used significance level (α) for determining statistical significance?",
+    "options": [
+      "0.01",
+      "0.05",
+      "0.10",
+      "0.25"
+    ],
+    "correctAnswer": 1,
+    "explanation": "The significance level α = 0.05 is the most commonly used threshold in hypothesis testing. It means there's a 5% chance of rejecting the null hypothesis when it's actually true (Type I error)."
+  },
+  {
+    "id": 8,
+    "question": "Which Indian government initiative is focused on AI and data science development?",
+    "options": [
+      "Make in India",
+      "Digital India and NITI Aayog AI programs",
+      "Skill India",
+      "Startup India"
+    ],
+    "correctAnswer": 1,
+    "explanation": "Digital India and NITI Aayog's AI programs are the primary government initiatives focused on AI and data science development. NITI Aayog has launched 'AI for All' and other programs to promote AI adoption in India."
+  },
+  {
+    "id": 9,
+    "question": "Which deep learning framework is developed by Google and widely used in the Indian tech industry?",
+    "options": [
+      "PyTorch",
+      "Keras",
+      "TensorFlow",
+      "Caffe"
+    ],
+    "correctAnswer": 2,
+    "explanation": "TensorFlow is developed by Google and is one of the most popular deep learning frameworks used in India and worldwide. It's used for building and training neural networks for various applications."
+  },
+  {
+    "id": 10,
+    "question": "For detecting fraud in UPI transactions (Paytm, PhonePe), which type of machine learning would be most appropriate?",
+    "options": [
+      "Supervised Learning - Classification",
+      "Unsupervised Learning - Clustering",
+      "Reinforcement Learning",
+      "Semi-supervised Learning"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Supervised Learning with Classification algorithms (like Logistic Regression or Random Forest) is most appropriate for fraud detection. The model is trained on labeled data (fraudulent vs legitimate transactions) to classify new transactions."
+  }
+]
