@@ -124,7 +124,10 @@ function AdminDashboard() {
 
   return (
     <div className="container">
-      <h1>🔐 Admin Dashboard</h1>
+      <h1>🔐 AI Cloud Enterprises - Admin Dashboard</h1>
+      <div style={{ textAlign: 'center', color: 'white', fontSize: '14px', marginBottom: '20px' }}>
+        iiskills.cloud
+      </div>
 
       <div className="card">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

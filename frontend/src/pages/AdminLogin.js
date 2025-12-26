@@ -28,7 +28,10 @@ function AdminLogin() {
 
   return (
     <div className="container">
-      <h1>🔐 Admin Login</h1>
+      <h1>🔐 AI Cloud Enterprises - Admin Login</h1>
+      <div style={{ textAlign: 'center', color: 'white', fontSize: '14px', marginBottom: '20px' }}>
+        iiskills.cloud
+      </div>
       
       <div className="card" style={{ maxWidth: '500px', margin: '0 auto' }}>
         <h2 style={{ textAlign: 'center' }}>Admin Access</h2>

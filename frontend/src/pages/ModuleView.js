@@ -67,6 +67,11 @@ function ModuleView({ user }) {
 
   return (
     <div className="container">
+      <h1>AI Cloud Enterprises - Learning Module</h1>
+      <div style={{ textAlign: 'center', color: 'white', fontSize: '14px', marginBottom: '20px' }}>
+        iiskills.cloud
+      </div>
+      
       <div className="card">
         <button onClick={() => navigate('/dashboard')} className="btn btn-secondary">
           ← Back to Dashboard

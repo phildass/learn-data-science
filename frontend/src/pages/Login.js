@@ -57,10 +57,25 @@ function Login({ setUser }) {
 
   return (
     <div className="container">
+      <div style={{ display: 'flex', alignItems: 'center', gap: '30px', marginBottom: '20px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+          <img src="/images/iiskills.png" alt="iiskills.cloud" style={{ height: '80px', width: 'auto' }} />
+          <span style={{ color: 'white', fontSize: '14px', fontWeight: '500', maxWidth: '200px', lineHeight: '1.4' }}>
+            Indian Institute of Professional Skills Development
+          </span>
+        </div>
+        <div>
+          <img src="/images/ai-cloud.png" alt="AI Cloud Enterprises" style={{ height: '80px', width: 'auto' }} />
+        </div>
+      </div>
+      
       <h1>🎓 Learn Data Science</h1>
-      <h2 style={{ color: 'white', textAlign: 'center', marginBottom: '30px' }}>
-        Master AI/ML for the Indian Job Market
+      <h2 style={{ color: 'white', textAlign: 'center', marginBottom: '10px' }}>
+        AI Cloud Enterprises
       </h2>
+      <h3 style={{ color: 'white', textAlign: 'center', marginBottom: '30px', fontWeight: 'normal' }}>
+        Master AI/ML for the Indian Job Market
+      </h3>
       
       <div className="card" style={{ maxWidth: '500px', margin: '0 auto' }}>
         <h2 style={{ textAlign: 'center' }}>Login with OTP</h2>
