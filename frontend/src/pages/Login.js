@@ -57,15 +57,17 @@ function Login({ setUser }) {
 
   return (
     <div className="container">
-      <div style={{ display: 'flex', alignItems: 'center', gap: '30px', marginBottom: '20px', flexWrap: 'wrap' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-          <img src="/images/iiskills.png" alt="iiskills.cloud" style={{ height: '80px', width: 'auto' }} />
-          <span style={{ color: 'white', fontSize: '14px', fontWeight: '500', maxWidth: '200px', lineHeight: '1.4' }}>
-            Indian Institute of Professional Skills Development
-          </span>
-        </div>
-        <div>
-          <img src="/images/ai-cloud.png" alt="AI Cloud Enterprises" style={{ height: '80px', width: 'auto' }} />
+      <div className="logo-bar">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '30px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+            <img src="/images/iiskills.png" alt="iiskills.cloud" style={{ height: '80px', width: 'auto' }} />
+            <span style={{ color: '#2d3748', fontSize: '14px', fontWeight: '500', maxWidth: '200px', lineHeight: '1.4' }}>
+              Indian Institute of Professional Skills Development
+            </span>
+          </div>
+          <div>
+            <img src="/images/ai-cloud.png" alt="AI Cloud Enterprises" style={{ height: '80px', width: 'auto' }} />
+          </div>
         </div>
       </div>
       
