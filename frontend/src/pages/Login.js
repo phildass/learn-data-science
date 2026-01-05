@@ -1,80 +1,177 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import LogoBar from '../components/LogoBar';
+import Footer from '../components/Footer';
 
-function Login({ setUser }) {
+function Login() {
+  const [mode, setMode] = useState('login'); // 'login' or 'signup'
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
+  
+  const { signIn, signUp } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setMessage('');
+    setLoading(true);
+
+    try {
+      if (mode === 'login') {
+        await signIn(email, password);
+        navigate('/dashboard');
+      } else {
+        await signUp(email, password, { role: 'user' });
+        setMessage('Account created! Please check your email to verify your account, then login.');
+        setMode('login');
+      }
+    } catch (err) {
+      setError(err.message || 'An error occurred');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="container">
-      <div className="logo-bar">
-        <div className="logo-bar-nav">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '30px', flexWrap: 'wrap' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-              <img src="/images/iiskills.png" alt="iiskills.cloud" style={{ height: '80px', width: 'auto' }} />
-              <span style={{ color: '#2d3748', fontSize: '14px', fontWeight: '500', maxWidth: '200px', lineHeight: '1.4' }}>
-                Indian Institute of Professional Skills Development
-              </span>
-            </div>
-            <div>
-              <img src="/images/ai-cloud.png" alt="AI Cloud Enterprises" style={{ height: '80px', width: 'auto' }} />
-            </div>
-          </div>
-          <div className="logo-bar-actions">
-            <a 
-              href="https://iiskills.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="nav-link"
-            >
-              Register
-            </a>
-            <a 
-              href="https://iiskills.com/payment" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="nav-link secondary"
-            >
-              Make Payment
-            </a>
-          </div>
-        </div>
-      </div>
+      <LogoBar />
       
-      <h1>🎓 Learn Data Science</h1>
+      <h1>🎓 iiskills.cloud - Data Science</h1>
       <h2 style={{ color: 'white', textAlign: 'center', marginBottom: '10px' }}>
-        AI Cloud Enterprises
+        Indian Institute of Professional Skills Development
       </h2>
       <h3 style={{ color: 'white', textAlign: 'center', marginBottom: '30px', fontWeight: 'normal' }}>
         Master AI/ML for the Indian Job Market
       </h3>
       
-      <div className="card" style={{ maxWidth: '800px', margin: '0 auto' }}>
+      <div className="card" style={{ maxWidth: '500px', margin: '0 auto' }}>
+        <h2 style={{ textAlign: 'center', color: '#667eea', marginBottom: '30px' }}>
+          {mode === 'login' ? 'Login to Your Account' : 'Create Your Account'}
+        </h2>
+        
+        {error && (
+          <div className="alert alert-error">
+            {error}
+          </div>
+        )}
+        
+        {message && (
+          <div className="alert alert-success">
+            {message}
+          </div>
+        )}
+        
+        <form onSubmit={handleSubmit}>
+          <div style={{ marginBottom: '20px' }}>
+            <label style={{ display: 'block', marginBottom: '5px', fontWeight: '600' }}>
+              Email Address
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="your-email@example.com"
+              required
+              disabled={loading}
+            />
+          </div>
+          
+          <div style={{ marginBottom: '20px' }}>
+            <label style={{ display: 'block', marginBottom: '5px', fontWeight: '600' }}>
+              Password
+            </label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
+              required
+              minLength="6"
+              disabled={loading}
+            />
+            {mode === 'signup' && (
+              <small style={{ color: '#718096', fontSize: '0.9rem' }}>
+                Password must be at least 6 characters
+              </small>
+            )}
+          </div>
+          
+          <button 
+            type="submit" 
+            className="btn btn-primary" 
+            style={{ width: '100%', marginTop: '10px' }}
+            disabled={loading}
+          >
+            {loading ? 'Please wait...' : (mode === 'login' ? 'Login' : 'Sign Up')}
+          </button>
+        </form>
+        
+        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+          <button
+            onClick={() => {
+              setMode(mode === 'login' ? 'signup' : 'login');
+              setError('');
+              setMessage('');
+            }}
+            style={{ 
+              background: 'none', 
+              border: 'none', 
+              color: '#667eea', 
+              cursor: 'pointer',
+              fontSize: '16px',
+              textDecoration: 'underline'
+            }}
+          >
+            {mode === 'login' 
+              ? "Don't have an account? Sign up" 
+              : 'Already have an account? Login'}
+          </button>
+        </div>
+      </div>
+      
+      <div className="card" style={{ maxWidth: '800px', margin: '20px auto' }}>
         <h2 style={{ 
           textAlign: 'center', 
           color: '#667eea', 
-          fontSize: '28px', 
-          marginBottom: '30px',
-          fontWeight: '700'
+          fontSize: '24px', 
+          marginBottom: '20px'
         }}>
           Premium Course Information
         </h2>
         
         <div style={{
           background: 'linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%)',
-          border: '3px solid #667eea',
-          borderRadius: '15px',
-          padding: '40px',
-          marginBottom: '20px',
-          boxShadow: '0 8px 20px rgba(102, 126, 234, 0.15)'
+          border: '2px solid #e2e8f0',
+          borderRadius: '10px',
+          padding: '30px',
+          lineHeight: '1.8',
+          color: '#2d3748'
         }}>
-          <p style={{
-            fontSize: '18px',
-            lineHeight: '1.8',
-            color: '#2d3748',
-            textAlign: 'justify',
-            margin: '0'
-          }}>
-            For a <strong>Premium Course</strong>, you have to register yourself compulsorily at <strong>iiskills.com</strong> and make a payment of <strong>Rs 99</strong> plus <strong>GST of 18% (₹17.82)</strong> with the total amount payable <strong>Rs 116.82</strong>. This makes you eligible to participate in the course. You will have a <strong>one year subscription</strong> whereby you can complete your course and avail the certificate. In case you are not satisfied with your results, you can retake the course by making the payment again. As soon as you make the payment enter the OTP you will receive on your phone and email id and you can view the course. <strong>Good luck.</strong>
+          <p style={{ marginBottom: '15px' }}>
+            <strong>Welcome to iiskills.cloud!</strong> This comprehensive Data Science course includes:
+          </p>
+          <ul style={{ marginLeft: '20px', marginBottom: '15px' }}>
+            <li>6 comprehensive modules covering AI, ML, and Data Science</li>
+            <li>Interactive quizzes with instant feedback</li>
+            <li>Industry-recognized certification (Gold/Silver/Bronze)</li>
+            <li>Community forum for peer learning</li>
+            <li>One year subscription access</li>
+          </ul>
+          <p>
+            <strong>Course Fee:</strong> ₹99 + GST (18%) = <strong>₹116.82</strong>
+          </p>
+          <p style={{ fontSize: '0.9rem', color: '#718096', marginTop: '15px' }}>
+            Create your account to get started. Payment integration coming soon!
           </p>
         </div>
       </div>
+      
+      <Footer />
     </div>
   );
 }
