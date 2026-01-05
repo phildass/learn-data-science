@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import axios from 'axios';
+
+// Context
+import { AuthProvider } from './contexts/AuthContext';
 
 // Pages
 import Login from './pages/Login';
@@ -11,54 +13,65 @@ import Certificate from './pages/Certificate';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 
-// Configure axios
-axios.defaults.baseURL = 'http://localhost:5000/api';
-axios.defaults.withCredentials = true;
+// Components
+import { ProtectedRoute, AdminRoute } from './components/ProtectedRoute';
+import Forum from './components/Forum';
+import ThreadView from './components/ThreadView';
 
 function App() {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
-  const checkAuth = async () => {
-    try {
-      const response = await axios.get('/auth/me');
-      if (response.data.success) {
-        setUser(response.data.user);
-      }
-    } catch (error) {
-      console.log('Not authenticated');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (loading) {
-    return (
-      <div className="container">
-        <div className="card">
-          <div className="loading">Loading...</div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login setUser={setUser} />} />
-        <Route path="/dashboard" element={user ? <Dashboard user={user} setUser={setUser} /> : <Navigate to="/login" />} />
-        <Route path="/module/:id" element={user ? <ModuleView user={user} /> : <Navigate to="/login" />} />
-        <Route path="/quiz" element={user ? <Quiz user={user} /> : <Navigate to="/login" />} />
-        <Route path="/certificate" element={user ? <Certificate user={user} /> : <Navigate to="/login" />} />
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/" element={<Navigate to={user ? "/dashboard" : "/login"} />} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          
+          <Route path="/dashboard" element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/module/:id" element={
+            <ProtectedRoute>
+              <ModuleView />
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/quiz" element={
+            <ProtectedRoute>
+              <Quiz />
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/certificate" element={
+            <ProtectedRoute>
+              <Certificate />
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/forum" element={
+            <ProtectedRoute>
+              <Forum />
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/forum/thread/:threadId" element={
+            <ProtectedRoute>
+              <ThreadView />
+            </ProtectedRoute>
+          } />
+          
+          <Route path="/admin" element={
+            <AdminRoute>
+              <AdminDashboard />
+            </AdminRoute>
+          } />
+          
+          <Route path="/" element={<Navigate to="/dashboard" />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 
