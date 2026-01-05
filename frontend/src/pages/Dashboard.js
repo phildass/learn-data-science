@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
 import { useAuth } from '../contexts/AuthContext';
+import { DEFAULT_MODULES, TOTAL_MODULES } from '../constants/modules';
 import LogoBar from '../components/LogoBar';
 import Footer from '../components/Footer';
 
@@ -30,14 +31,14 @@ function Dashboard() {
       
       // If no modules in database, use default module data
       if (!data || data.length === 0) {
-        setModules(getDefaultModules());
+        setModules(DEFAULT_MODULES);
       } else {
         setModules(data);
       }
     } catch (error) {
       console.error('Failed to load modules:', error);
       // Fallback to default modules
-      setModules(getDefaultModules());
+      setModules(DEFAULT_MODULES);
     } finally {
       setLoading(false);
     }
@@ -86,15 +87,6 @@ function Dashboard() {
     }
   };
 
-  const getDefaultModules = () => [
-    { id: 1, title: 'Introduction to Data Science', description: 'Learn the fundamentals', order_index: 1, duration: '2 hours' },
-    { id: 2, title: 'Python for Data Science', description: 'Master Python basics', order_index: 2, duration: '3 hours' },
-    { id: 3, title: 'Statistics & Probability', description: 'Statistical foundations', order_index: 3, duration: '2.5 hours' },
-    { id: 4, title: 'Machine Learning', description: 'ML algorithms and concepts', order_index: 4, duration: '4 hours' },
-    { id: 5, title: 'Deep Learning', description: 'Neural networks and AI', order_index: 5, duration: '3.5 hours' },
-    { id: 6, title: 'Career Roadmap', description: 'Indian job market guide', order_index: 6, duration: '1.5 hours' }
-  ];
-
   const handleLogout = async () => {
     try {
       await signOut();
@@ -117,7 +109,7 @@ function Dashboard() {
   }
 
   const completedModules = userProgress.completed_modules || [];
-  const allModulesCompleted = completedModules.length === 6;
+  const allModulesCompleted = completedModules.length === TOTAL_MODULES;
 
   return (
     <div className="container">
@@ -129,7 +121,7 @@ function Dashboard() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '15px' }}>
           <div>
             <h2>Welcome, {user.email}</h2>
-            <p>Complete all 6 modules and take the quiz to earn your certificate!</p>
+            <p>Complete all {TOTAL_MODULES} modules and take the quiz to earn your certificate!</p>
           </div>
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
             <button onClick={() => navigate('/forum')} className="btn btn-primary">
@@ -147,11 +139,11 @@ function Dashboard() {
         <div className="progress-bar">
           <div 
             className="progress-fill" 
-            style={{ width: `${(completedModules.length / 6) * 100}%` }}
+            style={{ width: `${(completedModules.length / TOTAL_MODULES) * 100}%` }}
           ></div>
         </div>
         <p style={{ marginTop: '10px' }}>
-          <strong>{completedModules.length} of 6 modules completed</strong>
+          <strong>{completedModules.length} of {TOTAL_MODULES} modules completed</strong>
         </p>
         
         {userProgress.certificate_earned && (

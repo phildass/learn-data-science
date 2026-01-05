@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
 import { useAuth } from '../contexts/AuthContext';
+import { DEFAULT_MODULES } from '../constants/modules';
 import LogoBar from '../components/LogoBar';
 import Footer from '../components/Footer';
 
@@ -62,15 +63,7 @@ function ModuleView() {
   };
 
   const getDefaultModule = (moduleId) => {
-    const defaultModules = {
-      1: { id: 1, title: 'Introduction to Data Science', description: 'Learn the fundamentals', duration: '2 hours', content: 'Module content coming soon...' },
-      2: { id: 2, title: 'Python for Data Science', description: 'Master Python basics', duration: '3 hours', content: 'Module content coming soon...' },
-      3: { id: 3, title: 'Statistics & Probability', description: 'Statistical foundations', duration: '2.5 hours', content: 'Module content coming soon...' },
-      4: { id: 4, title: 'Machine Learning', description: 'ML algorithms and concepts', duration: '4 hours', content: 'Module content coming soon...' },
-      5: { id: 5, title: 'Deep Learning', description: 'Neural networks and AI', duration: '3.5 hours', content: 'Module content coming soon...' },
-      6: { id: 6, title: 'Career Roadmap', description: 'Indian job market guide', duration: '1.5 hours', content: 'Module content coming soon...' }
-    };
-    return defaultModules[moduleId] || null;
+    return DEFAULT_MODULES.find(m => m.id === moduleId) || null;
   };
 
   const handleComplete = async () => {

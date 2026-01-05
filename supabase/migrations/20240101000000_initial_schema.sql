@@ -55,6 +55,18 @@ CREATE TABLE IF NOT EXISTS quiz_questions (
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
+-- Create helper function for admin role checking
+CREATE OR REPLACE FUNCTION is_admin()
+RETURNS BOOLEAN AS $$
+BEGIN
+  RETURN (
+    (auth.jwt() ->> 'role')::text = 'admin' OR
+    (auth.jwt() -> 'user_metadata' ->> 'role')::text = 'admin' OR
+    (auth.jwt() -> 'app_metadata' ->> 'role')::text = 'admin'
+  );
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
 -- Enable Row Level Security
 ALTER TABLE forum_threads ENABLE ROW LEVEL SECURITY;
 ALTER TABLE forum_posts ENABLE ROW LEVEL SECURITY;
@@ -121,11 +133,7 @@ CREATE POLICY "Users can update their own progress"
 CREATE POLICY "Admins can view all progress"
   ON user_progress FOR SELECT
   TO authenticated
-  USING (
-    (auth.jwt() ->> 'role')::text = 'admin' OR
-    (auth.jwt() -> 'user_metadata' ->> 'role')::text = 'admin' OR
-    (auth.jwt() -> 'app_metadata' ->> 'role')::text = 'admin'
-  );
+  USING (is_admin());
 
 -- Modules Policies (Public read access)
 CREATE POLICY "Anyone can view modules"
@@ -135,11 +143,7 @@ CREATE POLICY "Anyone can view modules"
 CREATE POLICY "Only admins can manage modules"
   ON modules FOR ALL
   TO authenticated
-  USING (
-    (auth.jwt() ->> 'role')::text = 'admin' OR
-    (auth.jwt() -> 'user_metadata' ->> 'role')::text = 'admin' OR
-    (auth.jwt() -> 'app_metadata' ->> 'role')::text = 'admin'
-  );
+  USING (is_admin());
 
 -- Quiz Questions Policies (Public read, admin write)
 CREATE POLICY "Anyone can view quiz questions"
@@ -149,11 +153,7 @@ CREATE POLICY "Anyone can view quiz questions"
 CREATE POLICY "Only admins can manage quiz questions"
   ON quiz_questions FOR ALL
   TO authenticated
-  USING (
-    (auth.jwt() ->> 'role')::text = 'admin' OR
-    (auth.jwt() -> 'user_metadata' ->> 'role')::text = 'admin' OR
-    (auth.jwt() -> 'app_metadata' ->> 'role')::text = 'admin'
-  );
+  USING (is_admin());
 
 -- Create indexes for better performance
 CREATE INDEX IF NOT EXISTS idx_forum_threads_created_at ON forum_threads(created_at DESC);
